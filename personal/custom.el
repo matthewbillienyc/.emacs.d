@@ -22,7 +22,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (auto-complete-mode geiser json-mode js2-mode rainbow-mode elisp-slime-nav rainbow-delimiters company smex ido-ubiquitous flx-ido vkill exec-path-from-shell zop-to-char zenburn-theme volatile-highlights undo-tree smartrep smartparens operate-on-number move-text magit projectile ov guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl easy-kill diminish diff-hl discover-my-major browse-kill-ring anzu ace-window ace-jump-buffer ace-jump-mode)))
+    (typescript-mode markdown-mode geiser json-mode js2-mode rainbow-mode elisp-slime-nav rainbow-delimiters company smex ido-ubiquitous flx-ido vkill exec-path-from-shell zop-to-char zenburn-theme volatile-highlights undo-tree smartrep smartparens operate-on-number move-text magit projectile ov guru-mode grizzl god-mode gitignore-mode gitconfig-mode git-timemachine gist flycheck expand-region epl easy-kill diminish diff-hl discover-my-major browse-kill-ring anzu ace-window ace-jump-buffer ace-jump-mode)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(powerline-color1 "#3d3d68")
  '(powerline-color2 "#292945")
@@ -66,26 +66,56 @@
 (global-set-key (kbd "C-\"") 'toggle-quotes)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+
+;; use web-mode for .jsx files
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+
+;; http://www.flycheck.org/manual/latest/index.html
+(require 'flycheck)
+
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+              (append flycheck-disabled-checkers
+                      '(json-jsonlist)))
+
 (require 'linum)
 (require 'smartparens)
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/personal/sass-mode.el"))
+
+(add-to-list 'load-path (expand-file-name "/Users/maclocal/excella/all-the-icons-dired"))
+(load "all-the-icons-dired.el")
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
 (autoload 'scss-mode "scss-mode")
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.js.jsx\\'" . js-jsx-mode))
 (require 'web-mode)
 (setq web-mode-enable-auto-pairing nil)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (global-linum-mode)
 (global-unset-key "\C-\\")
-;; (setq global-whitespace-mode 0)
+(setq global-whitespace-mode 0)
 (setq ring-bell-function 'ignore)
 (setq prelude-whitespace nil)
 ;; (load-theme 'soft-charcoal t)
 ;;(load-theme 'colonoscopy t)
+
 (autoload 'auto-complete-mode "auto-complete-mode")
 (windmove-default-keybindings)
-(global-auto-complete-mode 1)
-(require 'helm-config)
-(helm-mode 1)
 (require 'prelude-helm-everywhere)
-(load-theme 'deeper-blue)
+(load-theme 'deeper-blue t)
 0
