@@ -1,0 +1,32 @@
+((("eval-print-last-sexp" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("end-of-buffer" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("url-retrieve" .
+   [0 0 0 0 1 0 0 0 0 0 0 0])
+  ("nil" .
+   [1 0 0])
+  ("unless" .
+   [1 0 0 0 0 0])
+  ("add-to-list" .
+   [0 0 0 0 0 0 2 0 0 0 2])
+  ("require" .
+   [2 0 0 0 0 0 0])
+  ("web-mode" .
+   [2 0 0 0 0 0 0 0])
+  ("auto-mode-alist" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("define-globalized-minor-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("linum-mode" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("lambda" .
+   [2 0 0 0 0 0])
+  ("global-linum" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("kooten-theme" .
+   [0 0 0 1 0 0 1 0 0 0 0 0])
+  ("load-path" .
+   [0 0 0 0 0 0 0 0 1])
+  ("BaseDto" .
+   [1 0 0 0 0 0 0])))
